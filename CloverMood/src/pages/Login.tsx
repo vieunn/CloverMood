@@ -92,6 +92,8 @@ export default function Login() {
         localStorage.setItem('refreshToken', parsedAuthData.refresh_token);
       }
 
+      localStorage.setItem('userEmail', email);
+
       navigate('/dashboard');
     } catch (err) {
       console.error('Login error:', err);

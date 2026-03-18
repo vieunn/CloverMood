@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
 
 type Mood = 'Happy' | 'Peaceful' | 'Calm' | 'Stressed' | 'Neutral' | 'Sad' | null;
@@ -152,10 +153,10 @@ export default function Dashboard() {
           <span>CLOVERMOOD</span>
         </div>
         <nav style={{ display: 'flex', gap: '32px' }}>
-          <a href="#" style={{ color: '#059669', fontWeight: '500', textDecoration: 'none' }}>Home</a>
+          <Link to="/dashboard" style={{ color: '#059669', fontWeight: '500', textDecoration: 'none' }}>Home</Link>
           <a href="#" style={{ color: '#6B7280', fontWeight: '500', textDecoration: 'none' }}>History</a>
           <a href="#" style={{ color: '#6B7280', fontWeight: '500', textDecoration: 'none' }}>Statistics</a>
-          <a href="#" style={{ color: '#6B7280', fontWeight: '500', textDecoration: 'none' }}>Profile</a>
+          <Link to="/profile" style={{ color: '#6B7280', fontWeight: '500', textDecoration: 'none' }}>Profile</Link>
         </nav>
       </header>
 
