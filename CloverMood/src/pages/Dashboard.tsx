@@ -82,7 +82,19 @@ export default function Dashboard() {
 
     setLoading(true);
     try {
+      // 1. Get stored credentials
       const token = localStorage.getItem('authToken');
+      const userId = localStorage.getItem('userId');
+
+      console.log('Dashboard handleSubmit - localStorage contents:', { authToken: token ? token.substring(0, 20) + '...' : null, userId });
+
+      if (!token || !userId) {
+        setError('Not authenticated. Please log in again.');
+        setLoading(false);
+        return;
+      }
+
+      // 2. Send mood with Authorization header
       const response = await fetch('http://localhost:8080/api/mood/check-in', {
         method: 'POST',
         headers: {
@@ -90,6 +102,7 @@ export default function Dashboard() {
           'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
+          userId: userId,
           mood: selectedMood,
           thought: thought.trim(),
         }),
@@ -108,7 +121,7 @@ export default function Dashboard() {
       setTimeout(() => setSuccess(false), 3000);
     } catch (err) {
       console.error('Check-in error:', err);
-      setError('An error occurred. Please check your connection and try again.');
+      setError(err instanceof Error ? err.message : 'An error occurred. Please check your connection and try again.');
     } finally {
       setLoading(false);
     }
