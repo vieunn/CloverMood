@@ -169,8 +169,8 @@ export default function Dashboard() {
           >
             Home
           </Link>
-          <a
-            href="#history"
+          <Link
+            to="/history"
             style={{
               textDecoration: 'none',
               color: '#6B7280',
@@ -187,7 +187,7 @@ export default function Dashboard() {
             }}
           >
             History
-          </a>
+          </Link>
           <a
             href="#statistics"
             style={{
