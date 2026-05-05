@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Leaf } from 'lucide-react';
 
 type Mood = 'Happy' | 'Peaceful' | 'Calm' | 'Stressed' | 'Neutral' | 'Sad' | null;
 
@@ -144,12 +145,16 @@ export default function Dashboard() {
         flexShrink: 0,
       }}>
         <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
           fontWeight: '600',
           fontSize: '18px',
           color: '#059669',
           letterSpacing: '0.05em',
         }}>
-          CLOVERMOOD
+          <Leaf style={{ width: '24px', height: '24px' }} />
+          <span>CLOVERMOOD</span>
         </div>
         <nav style={{
           display: 'flex',
@@ -188,25 +193,24 @@ export default function Dashboard() {
           >
             History
           </Link>
-          <a
-            href="#statistics"
+          <Link
+            to="/statistics"
             style={{
               textDecoration: 'none',
               color: '#6B7280',
               fontWeight: '500',
               fontSize: '14px',
               paddingBottom: '4px',
-              cursor: 'pointer',
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.color = '#059669';
+              (e.currentTarget as HTMLAnchorElement).style.color = '#059669';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.color = '#6B7280';
+              (e.currentTarget as HTMLAnchorElement).style.color = '#6B7280';
             }}
           >
             Statistics
-          </a>
+          </Link>
           <Link
             to="/profile"
             style={{

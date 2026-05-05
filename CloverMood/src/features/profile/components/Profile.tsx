@@ -1,5 +1,6 @@
 import { useState, useEffect, type ChangeEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Leaf } from "lucide-react";
 import { profileService, type ProfileData } from "../services/profileService";
 import "../../../styles/Profile.css";
 
@@ -241,12 +242,13 @@ export default function Profile() {
     <div className="profile-page">
       <header className="profile-nav">
         <div className="nav-left">
+          <Leaf style={{ width: "24px", height: "24px" }} />
           <span className="logo">CLOVERMOOD</span>
         </div>
         <nav className="nav-links">
           <Link to="/dashboard">Home</Link>
-          <a href="#history">History</a>
-          <a href="#statistics">Statistics</a>
+          <Link to="/history">History</Link>
+          <Link to="/statistics">Statistics</Link>
           <Link to="/profile" className="active">Profile</Link>
         </nav>
       </header>

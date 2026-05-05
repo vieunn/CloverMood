@@ -20,9 +20,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f9fafb;
+  background: #f4f7f5;
   font-family: system-ui, sans-serif;
-  color: #333;
+  color: #1f2937;
 }
 
 .profile-nav {
@@ -31,15 +31,15 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-bottom: 1px solid #dbe3df;
   flex-shrink: 0;
 }
 
 .nav-left {
   font-weight: 600;
   font-size: 18px;
-  color: #059669;
+  color: #0f766e;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -58,7 +58,7 @@ body {
 .nav-links a,
 .nav-links span {
   text-decoration: none;
-  color: #666;
+  color: #4b5563;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -66,12 +66,12 @@ body {
 }
 
 .nav-links a:hover {
-  color: #059669;
+  color: #0f766e;
 }
 
 .nav-links .active {
-  color: #059669;
-  border-bottom: 3px solid #059669;
+  color: #0f766e;
+  border-bottom: 3px solid #0f766e;
   padding-bottom: 2px;
 }
 
@@ -88,21 +88,21 @@ body {
 .profile-box {
   width: 100%;
   max-width: 700px;
-  background: white;
+  background: #ffffff;
   border-radius: 8px;
   padding: 30px 40px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .profile-box h1 {
   font-size: 28px;
   font-weight: 700;
   margin: 0 0 8px;
-  color: #111;
+  color: #0f172a;
 }
 
 .subtitle {
-  color: #888;
+  color: #64748b;
   font-size: 14px;
   margin: 0 0 20px;
 }
@@ -116,25 +116,25 @@ body {
 }
 
 .alert.success {
-  background: #d1fae5;
-  color: #065f46;
+  background: #ecfdf5;
+  color: #047857;
   border: 1px solid #a7f3d0;
 }
 
 .alert.error {
-  background: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
 }
 
 .loading {
   text-align: center;
   padding: 40px 20px;
-  color: #666;
+  color: #64748b;
 }
 
 .profile-header-section {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #dbe3df;
   padding-bottom: 25px;
   margin-bottom: 30px;
 }
@@ -153,8 +153,8 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e9b6d 0%, #0d7c54 100%);
-  color: white;
+  background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +169,7 @@ body {
   right: 0;
   width: 30px;
   height: 30px;
-  background: #059669;
+  background: #0f766e;
   border: 2px solid white;
   border-radius: 50%;
   display: flex;
@@ -197,18 +197,18 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 4px;
-  color: #333;
+  color: #0f172a;
 }
 
 .email-text {
   font-size: 14px;
-  color: #059669;
+  color: #0f766e;
   margin: 0;
 }
 
 .edit-profile-btn {
-  background: #059669;
-  color: white;
+  background: #0f766e;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -220,7 +220,7 @@ body {
 }
 
 .edit-profile-btn:hover {
-  background: #047857;
+  background: #115e59;
 }
 
 .form-grid {
@@ -238,7 +238,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   margin: 0 0 20px;
-  color: #888;
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -250,38 +250,52 @@ body {
 .form-group label {
   display: block;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 6px;
-  color: #555;
+  color: #334155;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 14px;
   font-family: inherit;
+  color: #0f172a;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder {
+  color: #94a3b8;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #059669;
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.12), 0 1px 2px rgba(15, 23, 42, 0.04);
+  background-color: #ffffff;
 }
 
-.form-group input:disabled {
-  background: #f5f5f5;
-  cursor: not-allowed;
-  color: #888;
-}
-
+.form-group input:disabled,
 .form-group select:disabled {
-  background: #f5f5f5;
+  background-color: #ffffff;
+  color: #64748b;
   cursor: not-allowed;
-  color: #888;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+/* Email field (read-only) styling */
+input[type="email"]:disabled {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #475569;
 }
 
 .button-group {
@@ -289,7 +303,7 @@ body {
   gap: 12px;
   margin: 40px 0 30px;
   padding-top: 30px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #dbe3df;
 }
 
 .btn {
@@ -304,12 +318,12 @@ body {
 }
 
 .btn.primary {
-  background: #059669;
-  color: white;
+  background: #0f766e;
+  color: #ffffff;
 }
 
 .btn.primary:hover:not(:disabled) {
-  background: #047857;
+  background: #115e59;
 }
 
 .btn.primary:disabled {
@@ -318,12 +332,12 @@ body {
 }
 
 .btn.secondary {
-  background: #f0f0f0;
-  color: #333;
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 .btn.secondary:hover:not(:disabled) {
-  background: #e0e0e0;
+  background: #cbd5e1;
 }
 
 .btn.secondary:disabled {
@@ -341,7 +355,7 @@ body {
 .signout-btn {
   background: none;
   border: none;
-  color: #059669;
+  color: #0f766e;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -350,5 +364,5 @@ body {
 }
 
 .signout-btn:hover {
-  color: #047857;
+  color: #115e59;
 }

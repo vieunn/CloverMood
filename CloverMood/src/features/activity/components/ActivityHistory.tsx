@@ -295,25 +295,24 @@ export const ActivityHistory: React.FC = () => {
           >
             History
           </Link>
-          <a
-            href="#statistics"
+          <Link
+            to="/statistics"
             style={{
               textDecoration: 'none',
               color: '#6B7280',
               fontWeight: '500',
               fontSize: '14px',
               paddingBottom: '4px',
-              cursor: 'pointer',
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.color = '#059669';
+              (e.currentTarget as HTMLAnchorElement).style.color = '#059669';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.color = '#6B7280';
+              (e.currentTarget as HTMLAnchorElement).style.color = '#6B7280';
             }}
           >
             Statistics
-          </a>
+          </Link>
           <Link
             to="/profile"
             style={{
