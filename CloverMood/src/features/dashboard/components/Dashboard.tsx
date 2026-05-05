@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
+import { API_CONFIG } from '../../../config/api';
 
 type Mood = 'Happy' | 'Peaceful' | 'Calm' | 'Stressed' | 'Neutral' | 'Sad' | null;
 
@@ -96,7 +97,7 @@ export default function Dashboard() {
       }
 
       // 2. Send mood with Authorization header
-      const moodResponse = await fetch('http://localhost:8080/api/moods', {
+      const moodResponse = await fetch(API_CONFIG.MOODS.CREATE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

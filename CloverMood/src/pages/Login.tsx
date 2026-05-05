@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Leaf, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_CONFIG } from '../config/api';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export default function Login() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch(API_CONFIG.AUTH.LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

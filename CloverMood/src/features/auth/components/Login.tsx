@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, Leaf, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import type { LoginCredentials } from '../types';
+import { API_CONFIG } from '../../../config/api';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export default function Login() {
     try {
       // 1. Call backend login
       const credentials: LoginCredentials = { email, password };
-      const loginResponse = await fetch('http://localhost:8080/api/auth/login', {
+      const loginResponse = await fetch(API_CONFIG.AUTH.LOGIN, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),

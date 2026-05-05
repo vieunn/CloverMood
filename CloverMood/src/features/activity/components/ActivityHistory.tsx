@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Smile, Target, Zap, Clock, AlertCircle, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { API_CONFIG } from '../../../config/api';
 
 // ============================================================================
 // Types & Interfaces
@@ -172,7 +173,7 @@ export const ActivityHistory: React.FC = () => {
         }
 
         // Fetch from API
-        const response = await fetch(`http://localhost:8080/api/activity-history/user/${userId}`, {
+        const response = await fetch(API_CONFIG.ACTIVITY.HISTORY(userId), {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

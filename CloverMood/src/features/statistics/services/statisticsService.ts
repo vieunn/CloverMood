@@ -1,13 +1,12 @@
 import type { StatisticsData } from '../types';
+import { getAuthHeaders } from '../../../shared/utils/api';
+import { API_CONFIG } from '../../../config/api';
 
 export const statisticsService = {
-  getStatistics: async (userId: string, token: string): Promise<StatisticsData> => {
-    const response = await fetch(`http://localhost:8080/api/statistics/${userId}`, {
+  getStatistics: async (userId: string): Promise<StatisticsData> => {
+    const response = await fetch(API_CONFIG.STATISTICS.GET(userId), {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
+      headers: getAuthHeaders(),
     });
 
     if (!response.ok) {

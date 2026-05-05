@@ -1,11 +1,10 @@
 import type { LoginCredentials, RegisterCredentials, AuthResponse } from '../types';
-
-const API_BASE_URL = 'http://localhost:8080/api/auth';
+import { API_CONFIG } from '../../../config/api';
 
 export const authService = {
   login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/login`, {
+      const response = await fetch(API_CONFIG.AUTH.LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +22,7 @@ export const authService = {
 
   register: async (credentials: RegisterCredentials): Promise<AuthResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/register`, {
+      const response = await fetch(API_CONFIG.AUTH.REGISTER, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

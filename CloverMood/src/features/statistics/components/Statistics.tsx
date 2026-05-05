@@ -43,15 +43,14 @@ export const Statistics: React.FC = () => {
         setError(null);
 
         const userId = localStorage.getItem('userId');
-        const token = localStorage.getItem('authToken');
 
-        if (!userId || !token) {
+        if (!userId) {
           setError('Please log in to view statistics.');
           setLoading(false);
           return;
         }
 
-        const data = await statisticsService.getStatistics(userId, token);
+        const data = await statisticsService.getStatistics(userId);
         setStats(data);
       } catch (err) {
         console.error('Error fetching statistics:', err);

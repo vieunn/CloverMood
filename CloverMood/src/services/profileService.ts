@@ -1,4 +1,6 @@
-const API_BASE_URL = "http://localhost:8080/api";
+import { authService } from "../features/auth/services/authService";
+import { getAuthHeaders } from "../shared/utils/api";
+import { API_CONFIG } from "../config/api";
 
 export interface ProfileData {
   email: string;
@@ -17,7 +19,8 @@ export const profileService = {
   getProfile: async (email: string): Promise<ApiResponse<ProfileData>> => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/profile?email=${encodeURIComponent(email)}`
+        `${API_CONFIG.PROFILE.GET}?email=${encodeURIComponent(email)}`,
+        { headers: getAuthHeaders() }
       );
       return await response.json();
     } catch (error) {
@@ -30,9 +33,9 @@ export const profileService = {
 
   updateProfile: async (profile: ProfileData): Promise<ApiResponse<ProfileData>> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/profile`, {
+      const response = await fetch(`${API_CONFIG.PROFILE.UPDATE}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify(profile),
       });
       return await response.json();
@@ -50,9 +53,9 @@ export const profileService = {
     newPassword: string
   ): Promise<ApiResponse<null>> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/profile/password`, {
+      const response = await fetch(`${API_CONFIG.PROFILE.UPDATE_PASSWORD}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ email, currentPassword, newPassword }),
       });
       return await response.json();
@@ -72,10 +75,18 @@ export const profileService = {
       const formData = new FormData();
       formData.append("file", file);
 
+      const token = authService.getToken();
+      const headers: Record<string, string> = {};
+      
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(
-        `${API_BASE_URL}/profile/photo?email=${encodeURIComponent(email)}`,
+        `${API_CONFIG.PROFILE.PHOTO}?email=${encodeURIComponent(email)}`,
         {
           method: "POST",
+          headers,
           body: formData,
         }
       );
@@ -105,7 +116,8 @@ export const profileService = {
   getProfilePhoto: async (email: string): Promise<{ success: boolean; hasPhoto: boolean; image?: string }> => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/profile/photo?email=${encodeURIComponent(email)}`
+        `${API_CONFIG.PROFILE.PHOTO}?email=${encodeURIComponent(email)}`,
+        { headers: getAuthHeaders() }
       );
       return await response.json();
     } catch (error) {

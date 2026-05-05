@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Leaf, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_CONFIG } from '../config/api';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ export default function Register() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/register', {
+      const response = await fetch(API_CONFIG.AUTH.REGISTER, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
