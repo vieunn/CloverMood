@@ -7,10 +7,11 @@ export const statisticsService = {
     const response = await fetch(API_CONFIG.STATISTICS.GET(userId), {
       method: 'GET',
       headers: getAuthHeaders(),
+      credentials: 'include',
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch statistics');
+      throw new Error(`Failed to fetch statistics: HTTP ${response.status}`);
     }
 
     return response.json();

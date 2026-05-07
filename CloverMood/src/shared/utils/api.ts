@@ -35,5 +35,6 @@ export const authorizedFetch = (
   return fetch(url, {
     ...options,
     headers,
+    credentials: 'include',
   });
 };

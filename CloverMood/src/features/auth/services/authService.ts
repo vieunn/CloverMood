@@ -9,13 +9,24 @@ export const authService = {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(credentials),
       });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        return {
+          success: false,
+          message: error.message || `HTTP Error: ${response.status}`,
+        };
+      }
+      
       return await response.json();
     } catch (error) {
+      console.error('Login error:', error);
       return {
         success: false,
-        message: 'Failed to login',
+        message: error instanceof Error ? error.message : 'Failed to login',
       };
     }
   },
@@ -27,13 +38,24 @@ export const authService = {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(credentials),
       });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        return {
+          success: false,
+          message: error.message || `HTTP Error: ${response.status}`,
+        };
+      }
+      
       return await response.json();
     } catch (error) {
+      console.error('Register error:', error);
       return {
         success: false,
-        message: 'Failed to register',
+        message: error instanceof Error ? error.message : 'Failed to register',
       };
     }
   },

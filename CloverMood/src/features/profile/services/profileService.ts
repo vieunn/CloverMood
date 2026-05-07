@@ -10,13 +10,17 @@ export const profileService = {
     try {
       const response = await fetch(
         `${API_CONFIG.PROFILE.GET}?email=${encodeURIComponent(email)}`,
-        { headers: getAuthHeaders() }
+        { headers: getAuthHeaders(), credentials: 'include' }
       );
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
       return await response.json();
     } catch (error) {
+      console.error('Get profile error:', error);
       return {
         success: false,
-        message: 'Failed to fetch profile',
+        message: error instanceof Error ? error.message : 'Failed to fetch profile',
       };
     }
   },
@@ -26,13 +30,18 @@ export const profileService = {
       const response = await fetch(`${API_CONFIG.PROFILE.UPDATE}`, {
         method: 'PUT',
         headers: getAuthHeaders(),
+        credentials: 'include',
         body: JSON.stringify(profile),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
       return await response.json();
     } catch (error) {
+      console.error('Update profile error:', error);
       return {
         success: false,
-        message: 'Failed to update profile',
+        message: error instanceof Error ? error.message : 'Failed to update profile',
       };
     }
   },
@@ -46,13 +55,18 @@ export const profileService = {
       const response = await fetch(`${API_CONFIG.PROFILE.UPDATE_PASSWORD}`, {
         method: 'PUT',
         headers: getAuthHeaders(),
+        credentials: 'include',
         body: JSON.stringify({ email, currentPassword, newPassword }),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
       return await response.json();
     } catch (error) {
+      console.error('Update password error:', error);
       return {
         success: false,
-        message: 'Failed to update password',
+        message: error instanceof Error ? error.message : 'Failed to update password',
       };
     }
   },
@@ -61,13 +75,17 @@ export const profileService = {
     try {
       const response = await fetch(
         `${API_CONFIG.PROFILE.PHOTO}?email=${encodeURIComponent(email)}`,
-        { headers: getAuthHeaders() }
+        { headers: getAuthHeaders(), credentials: 'include' }
       );
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
       return await response.json();
     } catch (error) {
+      console.error('Get profile photo error:', error);
       return {
         success: false,
-        message: 'Failed to fetch profile photo',
+        message: error instanceof Error ? error.message : 'Failed to fetch profile photo',
       };
     }
   },
@@ -88,13 +106,18 @@ export const profileService = {
       const response = await fetch(`${API_CONFIG.PROFILE.PHOTO}`, {
         method: 'POST',
         headers,
+        credentials: 'include',
         body: formData,
       });
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
       return await response.json();
     } catch (error) {
+      console.error('Upload photo error:', error);
       return {
         success: false,
-        message: 'Failed to upload photo',
+        message: error instanceof Error ? error.message : 'Failed to upload photo',
       };
     }
   },
