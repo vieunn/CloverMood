@@ -182,7 +182,11 @@ export const ActivityHistory: React.FC = () => {
           method: 'GET',
           headers: headers,
           credentials: 'include',
+          mode: 'cors',
         });
+
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
 
         if (!response.ok) {
           throw new Error('Failed to fetch activity history');
