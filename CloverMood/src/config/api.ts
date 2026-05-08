@@ -38,6 +38,6 @@ export const API_CONFIG = {
   
   // Activity endpoints
   ACTIVITY: {
-    HISTORY: (userId: string) => `${getApiBaseUrl()}/activity-history/user/${userId}`,
+    HISTORY: `${getApiBaseUrl()}/activity-history`,
   },
 };

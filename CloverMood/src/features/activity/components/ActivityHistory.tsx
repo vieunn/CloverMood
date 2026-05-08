@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Smile, Target, Zap, Clock, AlertCircle, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { API_CONFIG } from '../../../config/api';
+import { getAuthHeaders } from '../../../shared/utils/api';
 
 // ============================================================================
 // Types & Interfaces
@@ -162,23 +163,19 @@ export const ActivityHistory: React.FC = () => {
         setLoading(true);
         setError(null);
 
-        // Get userId from localStorage
-        const userId = localStorage.getItem('userId');
         const token = localStorage.getItem('authToken');
 
-        if (!userId || !token) {
+        if (!token) {
           setError('Please log in to view your activity history.');
           setLoading(false);
           return;
         }
 
         // Fetch from API
-        const response = await fetch(API_CONFIG.ACTIVITY.HISTORY(userId), {
+        const response = await fetch(API_CONFIG.ACTIVITY.HISTORY, {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
+          headers: getAuthHeaders(),
+          credentials: 'include',
         });
 
         if (!response.ok) {
