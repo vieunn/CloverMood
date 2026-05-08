@@ -171,10 +171,16 @@ export const ActivityHistory: React.FC = () => {
           return;
         }
 
+        console.log('Fetching activity history with token:', token.substring(0, 20) + '...');
+        console.log('Using endpoint:', API_CONFIG.ACTIVITY.HISTORY);
+        
+        const headers = getAuthHeaders();
+        console.log('Headers:', headers);
+
         // Fetch from API
         const response = await fetch(API_CONFIG.ACTIVITY.HISTORY, {
           method: 'GET',
-          headers: getAuthHeaders(),
+          headers: headers,
           credentials: 'include',
         });
 
